@@ -1,0 +1,26 @@
+drop database if exists JSP_AM;
+create database JSP_AM;
+use JSP_AM;
+
+create table article(
+	id int unsigned primary key auto_increment
+	, regDate datetime not null
+	, memberId int not null
+	, boardId int not null
+	, title varchar(100) not null
+	, content text not null
+	, viewCnt int not null
+);
+select * from article
+order by id desc;
+INSERT INTO article (regDate, memberId, boardId, title, content, viewCnt) 
+VALUES (NOW(), 1, 1, '첫 번째 테스트 게시글입니다', '여기는 게시글의 내용이 들어가는 영역입니다. 데이터베이스 연결 테스트를 위한 글입니다.', 15);
+
+-- 2. 두 번째 테스트 게시글 (제목: 좋아요)
+INSERT INTO article (regDate, memberId, boardId, title, content, viewCnt) 
+VALUES (NOW(), 1, 1, '제목은 이렇게 써봤어요', '두 번째로 작성하는 테스트 데이터입니다. 코드 실행에 문제가 없는지 확인해봅시다.', 7);
+
+-- 3. 세 번째 테스트 게시글 (날짜와 조회수가 다름)
+INSERT INTO article (regDate, memberId, boardId, title, content, viewCnt) 
+VALUES (DATE_SUB(NOW(), INTERVAL 1 HOUR), 2, 2, '시간을 과거로 설정한 글', '이 글은 한 시간 전에 작성된 것으로 가정합니다. 멤버 ID는 2번입니다.', 30);
+select * from article;
