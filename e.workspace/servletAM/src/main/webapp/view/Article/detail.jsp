@@ -40,7 +40,7 @@ th, td {
             <th>작성일</th>
             <th>제목</th>
             <th>내용</th> 
-            <th>조회수</th>
+            <th rowspan="2"><a href="/usr/article/modify?id=<%=article.getId()%>">수정하기</a></th>
         </tr>
     </thead>
     <tbody>
@@ -57,10 +57,10 @@ th, td {
                 <td><%=article.getRegDate()%></td>
                 <td><%=article.getTitle()%></td>
                 <td><%=article.getContent()%></td> 
-                <td><%=article.getViewCnt()%></td>
             </tr>
         <%} %>
     </tbody>
 </table>
+<div><button onclick="history.back();">뒤로가기</button></div>
 </body>
 </html>
